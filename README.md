@@ -41,6 +41,7 @@ Manipulate data. Split code into modules. Reflect on end result
 <!-- Add a link to your live demo in Github Pages 🌐-->
 
 <!-- ☝️ replace this description with a description of your own work -->
+This app shows you random star wars characters with info about them
 
 <!-- replace the code in the /docs folder with your own, so you can showcase your work with GitHub Pages 🌍 -->
 
@@ -53,7 +54,12 @@ Manipulate data. Split code into modules. Reflect on end result
 <!-- ...but how does one use this project? What are its features 🤔 -->
 
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
+This app used the Star wars API
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+TODO:
+Show 6 random characters
+Use CSS to style the page
+Allow one to click on an image to show more info
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
