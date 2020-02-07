@@ -1,3 +1,29 @@
+body{
+  background-color: black;
+}
+
+h1{
+  font-family: StarWars;
+  color: yellow;
+}
+
 p{
-  color: blue;
+  color: rgb(0, 247, 255);
+  border-style: solid;
+  border-width: 3px;
+  border-color: yellow;
+  padding: 1px;
+  font-family: Verdana;
+}
+
+button{
+  padding: 1px;
+  font-family: Verdana;
+  font-weight: bold;
+  background-color: yellow;
+}
+
+@font-face{
+  font-family: StarWars;
+  src: url(Starjedi.ttf);
 }

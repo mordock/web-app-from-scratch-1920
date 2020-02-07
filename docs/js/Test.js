@@ -1,72 +1,63 @@
-var urlBase = 'https://swapi.co/api';
-var urlExtensionCategory = '/people/';
+const urlBase = 'https://swapi.co/api';
+const urlExtensionCategory = '/people/';
 
-var randonNumber;
+var randomNumber;
+var previousRandomNumber = 88;
 var index = 1;
-var numberOfPeople = 6;
 
+const numberOfPeople = 6;
 const peopleListNumber = 88;
 
 GetData();
 
 async function GetData(){
+    //TODO refactor, dont loop here but loop in SetHTML to reduce API calls
     for(var i = 0; i < numberOfPeople; i++){
         GetRandomNumber();
 
         await fetch(urlBase + urlExtensionCategory + randomNumber)
-            .then((response) => { 
-                return response.json();
+            .then((response) => {
+                //handle client error with fetch
+                if(response.ok) {
+                    return response.json();
+                }else{
+                    return Promise.reject(response);
+                }
             })
             .then((myjson) => {
-                DoStuff(myjson);
+                SetHTML(myjson);
+            })
+            .catch(function(err){
+                console.warn("something went wrong. ", err);   
             });   
     }
 }  
 
-function DoStuff(json){
+function SetHTML(json){
+    //select current p through index
     var currentP = document.getElementById("p" + index);
 
-    currentP.innerText = json.name;
-
-    // var newP = document.createElement("p");
-    // var newContent = document.createTextNode(json.name);
-    // newP.appendChild(newContent);
-    // var reference = document.getElementById("Reference");
-    // document.body.insertBefore(newP, reference);
-
-     //newP.insertAdjacentHTML('beforeend', `<p>${json.name}</p>`);
-    // var starWarsContainer = document.getElementById("starWarsContainer")
-
-    // starWarsContainer.innerHTML = ""
-    // starWarsContainer.insertAdjacentHTML('beforeend', `<p>${json.name}</p>`)
-
-    // //get right div element
-    // var currentDiv = document.getElementById("Div" + index);
-    // while(currentDiv.hasChildNodes()){
-    //     currentDiv.removeChild(currentDiv.firstChild);
-    // }
-    // //currentDiv.innerText = '';
-    // document.body.insertBefore(newP, currentDiv);
+    currentP.innerText = json.name + ", " + json.birth_year;
 
     console.log(json.name);
 
-    //reset index to make sure it used the right divs
+    //increase index to cycle through p's
     index++;
+    //reset index to make sure it used the right divs
     if(index > numberOfPeople){
         index = 1;
     }
 }
 
 function GetRandomNumber(){
-    //never get the same name
+    //get random number based on total length people list
     randomNumber = Math.floor((Math.random() * peopleListNumber) + 1);
     console.log(randomNumber);
 
-    if(previousRandomNumber = randonNumber){
+    //call again if number already used
+    //TODO add check for all 6 number, not just previous
+    if(previousRandomNumber == randomNumber){
         GetRandomNumber();
     }
-    previousRandomNumber = randonNumber;
+    previousRandomNumber = randomNumber;
 }
-
-//inner text
-//create element - append child
