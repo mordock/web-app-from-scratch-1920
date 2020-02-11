@@ -2,9 +2,8 @@
 <!-- Add a link to your live demo in Github Pages 🌐-->
 https://mordock.github.io/web-app-from-scratch-1920/
 
-<!-- Add a nice poster image here at the end of the week, showing off your shiny frontend 📸 -->
 ![image](images/title.png)
-<!-- Maybe a table of contents here? 📚 -->
+
 ## Table of contents
 * [Description](#description-)
 * [Installing](#installing-)
@@ -16,7 +15,6 @@ https://mordock.github.io/web-app-from-scratch-1920/
 * [Sources](#sources-)
 * [To Do](#TODO)
 
-<!-- ☝️ replace this description with a description of your own work -->
 ## description
 This app shows you random star wars characters with info about them
 
@@ -51,6 +49,9 @@ species: Array [ "https://swapi.co/api/species/1/" ]
 starships: Array(3) [ "https://swapi.co/api/starships/59/", "https://swapi.co/api/starships/65/", "https://swapi.co/api/starships/39/" ]  
 url: "https://swapi.co/api/people/11/"  
 vehicles: Array [ "https://swapi.co/api/vehicles/44/", "https://swapi.co/api/vehicles/46/" ]
+
+## How it works
+
 
 ## Sources
 
