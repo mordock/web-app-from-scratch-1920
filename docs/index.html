@@ -8,26 +8,21 @@
 <body>
 	<h1 id='Title'>Random Star Wars characters</h1>
 	<section id="overview">
-		<div >
-			<p id="p1" onclick="Details()">Loading</p>
-			<p id="p2" onclick="Details()">Loading</p>
-			<p id="p3" onclick="Details()">Loading</p>
-			<p id="p4" onclick="Details()">Loading</p>
-			<p id="p5" onclick="Details()">Loading</p>
-			<p id="p6" onclick="Details()">Loading</p>
+		<p><a id="a1" href="#details">Loading</a></p>
+		<p><a id="a2" href="#details">Loading</a></p>
+		<p><a id="a3" href="#details">Loading</a></p>
+		<p><a id="a4" href="#details">Loading</a></p>
+		<p><a id="a5" href="#details">Loading</a></p>
+		<p><a id="a6" href="#details">Loading</a></p>
 
-			<button type="button" onclick="GetData()">Randomize</button>
-		</div>
+		<button type="button" onclick="getData()">Randomize</button>
 	</section>
 
-
 	<section id="details" class="hidden">
-		<div >
-			<p>Character name</p>
-			<p>Character gender</p>
-			<p>Character birthday</p>
-			<button type="button" onclick="Overview()">Back</button>
-		</div>
+		<p><a>Character name</a></p>
+		<p><a>Character gender</a></p>
+		<p><a>Character birthday</a></p>
+		<button type="button"><a href="#overview">back</a></button>
 	</section>
 
 	<script src="js/transparency.js"></script>
