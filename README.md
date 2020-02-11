@@ -4,22 +4,26 @@ https://mordock.github.io/web-app-from-scratch-1920/
 This app shows you random star wars characters with info about them
 
 <!-- Add a nice poster image here at the end of the week, showing off your shiny frontend 📸 -->
-![logo](/css/title.png)
+![image](css/title.png)
 <!-- Maybe a table of contents here? 📚 -->
+## Table of contents
 
 <!-- How about a section that describes how to install this project? 🤓 -->
 
 <!-- ...but how does one use this project? What are its features 🤔 -->
+## Features
 You can get 6 random Star Wars characters and click to see some more info about them.
 
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
+## API
 This app used the Star wars API.
+https://swapi.co/
+
 
 You can ask for certain character from suchs a link: 
 https://swapi.co/api/people/1/
 This is what the returned objects look like:
 
-0: {…}
 ​​​birth_year: "41.9BBY"
 ​​​created: "2014-12-10T16:20:44.310000Z"
 ​​​edited: "2014-12-20T21:17:50.327000Z"
@@ -38,5 +42,5 @@ This is what the returned objects look like:
 ​​​vehicles: Array [ "https://swapi.co/api/vehicles/44/", "https://swapi.co/api/vehicles/46/" ]
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
-TODO:
+## TODO:
 finish detail page to actually show info about a character
