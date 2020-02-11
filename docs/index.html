@@ -7,19 +7,32 @@
 
 <body>
 	<h1 id='Title'>Random Star Wars characters</h1>
+	<section id="overview">
+		<div >
+			<p id="p1" onclick="Details()">Loading</p>
+			<p id="p2" onclick="Details()">Loading</p>
+			<p id="p3" onclick="Details()">Loading</p>
+			<p id="p4" onclick="Details()">Loading</p>
+			<p id="p5" onclick="Details()">Loading</p>
+			<p id="p6" onclick="Details()">Loading</p>
 
-	<div>
-		<p id="p1">Loading</p>
-		<p id="p2">Loading</p>
-		<p id="p3">Loading</p>
-		<p id="p4">Loading</p>
-		<p id="p5">Loading</p>
-		<p id="p6">Loading</p>
-	</div>
+			<button type="button" onclick="GetData()">Randomize</button>
+		</div>
+	</section>
 
-	<button type="button" onclick="GetData();">Randomize</button>
 
-	<script src="js/Test.js"></script>
+	<section id="details" class="hidden">
+		<div >
+			<p>Character name</p>
+			<p>Character gender</p>
+			<p>Character birthday</p>
+			<button type="button" onclick="Overview()">Back</button>
+		</div>
+	</section>
+
+	<script src="js/transparency.js"></script>
+	<script src="js/routie.js"></script>
+	<script src="js/app.js"></script>
 
 </body>
 </html>
