@@ -2,8 +2,6 @@
 <!-- Add a link to your live demo in Github Pages 🌐-->
 https://mordock.github.io/web-app-from-scratch-1920/
 
-![image](images/title.png)
-
 ## Table of contents
 * [Description](#description-)
 * [Installing](#installing-)
@@ -51,6 +49,9 @@ url: "https://swapi.co/api/people/11/"
 vehicles: Array [ "https://swapi.co/api/vehicles/44/", "https://swapi.co/api/vehicles/46/" ]
 
 ## How it works
+
+## Interaction diagram
+![alt text](https://github.com/mordock/web-app-from-scratch-1920/blob/master/docs/images/WAFS%20interaction.png)
 
 
 ## Sources
