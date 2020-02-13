@@ -2,6 +2,8 @@
 <!-- Add a link to your live demo in Github Pages 🌐-->
 https://mordock.github.io/web-app-from-scratch-1920/
 
+![alt text](https://github.com/mordock/web-app-from-scratch-1920/blob/master/docs/images/WAFS%20title.png)
+
 ## Table of contents
 * [Description](#description-)
 * [Installing](#installing-)
@@ -52,6 +54,9 @@ vehicles: Array [ "https://swapi.co/api/vehicles/44/", "https://swapi.co/api/veh
 
 ## Interaction diagram
 ![alt text](https://github.com/mordock/web-app-from-scratch-1920/blob/master/docs/images/WAFS%20interaction.png)
+
+## Actor diagram
+![alt text](https://github.com/mordock/web-app-from-scratch-1920/blob/master/docs/images/WAFS%20actor.png)
 
 
 ## Sources
