@@ -123,7 +123,7 @@ function overview(json){
         console.log("overview");
         firstTime = false;
     }else{
-        switchPage();
+        //switchPage();
         setHTML(json);
         console.log("overview");
     }
