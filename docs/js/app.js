@@ -12,9 +12,8 @@ var randomNumber = 0;
 
 var firstTime = true;
 
-routie('overview');
 
-//switchPage();
+switchPage();
 
 
 // routie({
@@ -43,9 +42,6 @@ async function getData(){
             // console.log(myjson);
 
             routie({
-                'devtools/:id': id => {
-                  console.log(id);
-                },
                 'details': () => {
                   details();
                 },
@@ -53,6 +49,7 @@ async function getData(){
                   overview(myjson);
                 },
               });
+
         })
         .catch(function(err){
             console.warn("something went wrong. ", err);   
@@ -62,6 +59,7 @@ async function getData(){
 getData();
 
 function setHTML(json){
+    var values = [];
     numbersUsedList = [];
 
     //filter through data
@@ -69,12 +67,18 @@ function setHTML(json){
         //select current p through index
         var currentP = document.getElementById("a" + index);
 
+        var currentPName = "a" + index;
+
         //get length since not every list is 10
         var length = json.results.length;
 
         var currentRandom = getRandomNumber(length);
 
-        currentP.innerText = json.results[currentRandom].name;
+        values.push(json.results[currentRandom].name);
+
+        console.log(values);
+
+        //currentP.innerText = json.results[currentRandom].name;
 
         //increase index to cycle through a's
         index++;
@@ -83,6 +87,19 @@ function setHTML(json){
             index = 1;
         }
     }
+
+    var data = {
+        a1: values[0],
+        a2: values[1],
+        a3: values[2],
+        a4: values[3],
+        a5: values[4],
+        a6: values[5]
+    }
+
+    console.log(data);
+
+    Transparency.render(document.getElementById('overview'), data);
 }
 
 //get a random page from the API
@@ -119,14 +136,19 @@ function details(){
 function overview(json){
     console.log(firstTime);
     if(firstTime){
+        switchPage();
         setHTML(json);
         console.log("overview");
         firstTime = false;
     }else{
-        //switchPage();
+        switchPage();
         setHTML(json);
         console.log("overview");
     }
+}
+
+function backOverview(){
+
 }
 
 function switchPage(){
@@ -136,3 +158,5 @@ function switchPage(){
     overview.classList.toggle("hidden");
     detail.classList.toggle("hidden");
 }
+
+routie('overview');
