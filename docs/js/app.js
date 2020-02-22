@@ -10,25 +10,19 @@ const numberOfPages = 9;
 
 var randomNumber = 0;
 
-var firstTime = true;
+init();
 
+function init(){
+    const detail = document.getElementById("details");
 
-switchPage();
+    //make sure detail is closed in the beginning
+    detail.classList.add('hidden');
 
+    routie('overview');
+}
+//urlBase + urlExtensionCategory + urlPageExtension + randomAPIPage(numberOfPages)
 
-// routie({
-//     'devtools/:id': id => {
-//       console.log(id);
-//     },
-//     'details': () => {
-//       details();
-//     },
-//     'overview': () => {
-//       overview();
-//     },
-//   });
-
-async function getData(){
+async function getOverviewData(){
     await fetch(urlBase + urlExtensionCategory + urlPageExtension + randomAPIPage(numberOfPages))
         .then((response) => {                
             //handle client error with fetch
@@ -38,27 +32,51 @@ async function getData(){
                 return Promise.reject(response);
             }            })
         .then((myjson) => {
-            // setHTML(myjson);
-            // console.log(myjson);
-
-            routie({
-                'details': () => {
-                  details();
-                },
-                'overview': () => {
-                  overview(myjson);
-                },
-              });
-
+            renderOverview(myjson);
         })
         .catch(function(err){
             console.warn("something went wrong. ", err);   
     });   
 }
 
-getData();
+async function getDetailData(hash){
+    //replace special characters
+    var name = hash.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '');
+    //replace numbers with space, not with nothing for searching
+    name = name.replace(/[0-9]/g, ' ');
+    name = name.substring(0, 9);
 
-function setHTML(json){
+    console.log(name);
+    await fetch('https://swapi.co/api/people/?search=' + name)
+        .then((response) => {                
+            //handle client error with fetch
+            if(response.ok) {
+                return response.json();
+            }else{
+                return Promise.reject(response);
+            }            })
+        .then((myjson) => {
+            renderDetails(myjson);
+        })
+        .catch(function(err){
+            console.warn("something went wrong. ", err);   
+    });  
+}
+
+function renderDetails(json){
+    console.log(json.results[0]);
+    console.log(json.results[0].gender);
+
+    var data = {
+        name: json.results[0].name,
+        gender: json.results[0].gender,
+        birthday: json.results[0].birth_year  
+    }
+
+    Transparency.render(document.getElementById("details"), data);
+}
+
+function renderOverview(json){
     var values = [];
     numbersUsedList = [];
 
@@ -67,18 +85,14 @@ function setHTML(json){
         //select current p through index
         var currentP = document.getElementById("a" + index);
 
-        var currentPName = "a" + index;
-
         //get length since not every list is 10
         var length = json.results.length;
 
         var currentRandom = getRandomNumber(length);
 
+        currentP.href = '#/' + json.results[currentRandom].name;
+
         values.push(json.results[currentRandom].name);
-
-        console.log(values);
-
-        //currentP.innerText = json.results[currentRandom].name;
 
         //increase index to cycle through a's
         index++;
@@ -87,7 +101,7 @@ function setHTML(json){
             index = 1;
         }
     }
-
+    //Transparency data object
     var data = {
         a1: values[0],
         a2: values[1],
@@ -96,8 +110,6 @@ function setHTML(json){
         a5: values[4],
         a6: values[5]
     }
-
-    console.log(data);
 
     Transparency.render(document.getElementById('overview'), data);
 }
@@ -126,37 +138,37 @@ function getRandomNumber(maxNumber){
     return randomNumber;
 }
 
-//called when clicking on character name
 function details(){
-    switchPage();
-    console.log("details");
-}
-
-//called when clicking back button in detail page
-function overview(json){
-    console.log(firstTime);
-    if(firstTime){
-        switchPage();
-        setHTML(json);
-        console.log("overview");
-        firstTime = false;
-    }else{
-        switchPage();
-        setHTML(json);
-        console.log("overview");
-    }
-}
-
-function backOverview(){
-
-}
-
-function switchPage(){
-    console.log("AAHHH");
-    const overview = document.getElementById("overview");
     const detail = document.getElementById("details");
-    overview.classList.toggle("hidden");
-    detail.classList.toggle("hidden");
+    const overview = document.getElementById("overview");
+
+    //disable overview
+    detail.classList.remove('hidden');
+    overview.classList.add('hidden');
+
+    //get current hash
+    var hash = location.hash.toString();
+
+    getDetailData(hash);
 }
 
-routie('overview');
+function overview(){
+    const detail = document.getElementById("details");
+    const overview = document.getElementById("overview");
+
+    //disable details
+    detail.classList.add('hidden');
+    overview.classList.remove('hidden');
+
+    getOverviewData();
+}
+
+//routing
+routie({
+    'overview': () => {
+      overview();
+    },
+    '/:name': () => {
+        details();
+    }
+  });
