@@ -54,6 +54,7 @@ export function renderOverview(json){
     Transparency.render(document.getElementById('overview'), data);
 }
 
+//give loading info in the overview page
 export function setOverviewLoading(){
     const data = {
         a1: 'loading',
@@ -67,6 +68,7 @@ export function setOverviewLoading(){
     Transparency.render(document.getElementById('overview'), data);
 }
 
+//give loading info in the detail page
 export function setDetailLoading(){
     const data = {
         name: 'loading',

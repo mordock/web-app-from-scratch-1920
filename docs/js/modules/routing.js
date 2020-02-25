@@ -32,6 +32,7 @@ export function overview(){
     refresh();
 }
 
+//have a separate refresh so that init works with the randomize button as well
 export function refresh(){
     const detail = document.getElementById("details");
     const overview = document.getElementById("overview");
