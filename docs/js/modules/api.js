@@ -3,7 +3,7 @@ import {renderDetails, renderOverview} from './render.js'
 const urlBase = 'https://swapi.co/api';
 const urlExtensionCategory = '/people/';
 const urlPageExtension = '?page='
-const urlSearchExtension = ' '
+const urlSearchExtension = '?search='
 
 const numberOfPages = 9;
 
@@ -26,13 +26,12 @@ export async function getOverviewData(){
 
 export async function getDetailData(hash){
     //replace special characters
-    var name = hash.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '');
+    let name = hash.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '');
     //replace numbers with space, not with nothing for searching
     name = name.replace(/[0-9]/g, ' ');
     name = name.substring(0, 9);
 
-    console.log(name);
-    await fetch('https://swapi.co/api/people/?search=' + name)
+    await fetch(urlBase + urlExtensionCategory + urlSearchExtension + name)
         .then((response) => {                
             //handle client error with fetch
             if(response.ok) {
@@ -50,7 +49,7 @@ export async function getDetailData(hash){
 
 //get a random page from the API
 function randomAPIPage(maxNumberPages){
-    var randomPageNumber = Math.floor((Math.random() * maxNumberPages) + 1);
+     const randomPageNumber = Math.floor((Math.random() * maxNumberPages) + 1);
 
     return randomPageNumber;
 }

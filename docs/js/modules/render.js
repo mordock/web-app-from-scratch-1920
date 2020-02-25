@@ -1,32 +1,33 @@
-var numbersUsedList = [];
+let numbersUsedList = [];
 const numberOfPeople = 6;
-var index = 1;
+let index = 1;
 
-var randomNumber;
+let randomNumber;
 
 export function renderDetails(json){
-    var data = {
-        name: json.results[0].name,
-        gender: json.results[0].gender,
-        birthday: json.results[0].birth_year  
+    let data = {
+        name: 'Name: ' + json.results[0].name,
+        gender: 'Gender: ' + json.results[0].gender,
+        birthday: 'Birthday: ' + json.results[0].birth_year,
+        mass: 'Maxx(lbs): '  + calculateMass(json.results[0].mass)
     }
 
     Transparency.render(document.getElementById("details"), data);
 }
 
 export function renderOverview(json){
-    var values = [];
+    let values = [];
     numbersUsedList = [];
 
     //filter through data
-    for(var i = 0; i < numberOfPeople; i++){
+    for(let i = 0; i < numberOfPeople; i++){
         //select current p through index
-        var currentP = document.getElementById("a" + index);
+        let currentP = document.getElementById("a" + index);
 
         //get length since not every list is 10
-        var length = json.results.length;
+        const length = json.results.length;
 
-        var currentRandom = getRandomNumber(length);
+        const currentRandom = getRandomNumber(length);
 
         //set href for each name for searching
         currentP.href = '#/' + json.results[currentRandom].name;
@@ -41,7 +42,7 @@ export function renderOverview(json){
         }
     }
     //Transparency data object
-    var data = {
+    const data = {
         a1: values[0],
         a2: values[1],
         a3: values[2],
@@ -51,6 +52,30 @@ export function renderOverview(json){
     }
 
     Transparency.render(document.getElementById('overview'), data);
+}
+
+export function setOverviewLoading(){
+    const data = {
+        a1: 'loading',
+        a2: 'loading',
+        a3: 'loading',
+        a4: 'loading',
+        a5: 'loading',
+        a6: 'loading'
+    }
+
+    Transparency.render(document.getElementById('overview'), data);
+}
+
+export function setDetailLoading(){
+    const data = {
+        name: 'loading',
+        gender: 'loading',
+        birthday: 'loading',
+        mass: 'loading'
+    }
+
+    Transparency.render(document.getElementById('details'), data);
 }
 
 function getRandomNumber(maxNumber){
@@ -69,5 +94,14 @@ function getRandomNumber(maxNumber){
 
     if(randomNumber != null){
         return randomNumber;
+    }
+}
+
+function calculateMass(kgMass){
+    //check if mass is not in Api
+    if(kgMass == 'unknown'){
+        return 'unknown'
+    }else{
+        return (Math.round(kgMass * 2.204 * 100) / 100).toFixed(2);
     }
 }
