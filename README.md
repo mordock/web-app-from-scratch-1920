@@ -15,8 +15,12 @@ https://mordock.github.io/web-app-from-scratch-1920/
 * [Sources](#sources-)
 * [To Do](#TODO)
 
-## description
-This app shows you random star wars characters with info about them
+## Description
+This app shows you random star wars characters with info about them.
+-Name
+-Gender
+-Birthday
+-Mass
 
 <!-- How about a section that describes how to install this project? 🤓 -->
 
@@ -60,8 +64,8 @@ vehicles: Array [ "https://swapi.co/api/vehicles/44/", "https://swapi.co/api/veh
 
 
 ## Sources
-
+SW Font from Dafont.com
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## TODO:
-finish detail page to actually show info about a character
+Fix randomize button
