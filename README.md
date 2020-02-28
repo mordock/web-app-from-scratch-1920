@@ -6,13 +6,13 @@ Link to use of filter, map and reduce: https://codepen.io/mordock-the-encoder/pe
 ![alt text](https://github.com/mordock/web-app-from-scratch-1920/blob/master/docs/images/title.png)
 
 ## Table of contents
-* [Description](#description-)
-* [Installing](#installing-)
+* [Description](#description)
+* [Installing](#installing)
 * [API](#api-)
-* [How It Works](#how-it-works-)
+* [How It Works](#how-it-works)
   * [Actor Diagram](#actor-diagram)
   * [Interaction Diagram](#interaction-diagram)
-* [Sources](#sources-)
+* [Sources](#sources)
 * [To Do](#TODO)
 
 ## Description
@@ -61,5 +61,3 @@ SW Font from Dafont.com
 The following micro libraries were used for this project
   * [Transparency](https://github.com/leonidas/transparency)
   * [Routie](https://github.com/jgallen23/routie)
-
-## TODO:
