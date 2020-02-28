@@ -7,7 +7,6 @@ Link to use of filter, map and reduce: https://codepen.io/mordock-the-encoder/pe
 
 ## Table of contents
 * [Description](#description)
-* [Installing](#installing)
 * [API](#api-)
 * [How It Works](#how-it-works)
   * [Actor Diagram](#actor-diagram)
