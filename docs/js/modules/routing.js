@@ -1,6 +1,3 @@
-import {getOverviewData, getDetailData} from './api.js'
-import {setOverviewLoading, setDetailLoading} from './render.js'
-
 export function routing(){
     routie({
         'overview': () => {
